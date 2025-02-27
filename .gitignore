@@ -12,7 +12,7 @@ dist
 dist-ssr
 *.local
 .env
-
+src/components/SocialEventsApp.jsx
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
