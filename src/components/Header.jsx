@@ -3,7 +3,7 @@ import {BellIcon, Menu} from "lucide-react";
 
 const Header = () => {
     return (
-        <header className="flex justify-between items-center">
+        <header className="flex justify-between items-center bg-white py-4 px-6">
             <div className="sidebar">
                 <Menu/>
             </div>

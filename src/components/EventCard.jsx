@@ -3,9 +3,9 @@ import {ArrowRightIcon, CalendarIcon, MapPin, PersonStandingIcon} from "lucide-r
 
 const EventCard = () => {
     return (
-        <div className="event-card bg-white max-w-sm rounded-lg shadow-md">
+        <div className="event-card bg-white rounded-lg shadow-md">
             <div className="card-header">
-                <img src="https://placehold.co/600x400/png" alt=""/>
+                <img src="https://placehold.co/800x400/png" alt=""/>
             </div>
             <div className="card-content flex flex-col px-4 py-2 gap-6 mt-4">
                 <div className="card-meta flex gap-4 items-center">
@@ -34,7 +34,7 @@ const EventCard = () => {
                     </div>
                 </div>
             </div>
-            <div className="card-footer mb-10 mx-4 py-4">
+            <div className="card-footer mb-4 mx-4 py-4">
                 <button
                     className="flex gap-2 justify-center items-center border border-gray-200 w-full rounded-xl hover:border-blue-200 hover:text-blue-600 transition duration-300 py-2">
                     View Details
