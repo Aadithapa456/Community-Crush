@@ -4,7 +4,7 @@ import {Routes, Route} from "react-router-dom";
 import MainLayout from "@/components/MainLayout.jsx";
 import Home from "@/Pages/Home.jsx";
 import Map from "@/Pages/Map.jsx";
-// import EventCard from "@/components/EventCard.jsx";
+
 
 const App = () => {
     return (
