@@ -3,6 +3,7 @@ import SocialEventsApp from "@/components/SocialEventsApp.jsx";
 import {Routes, Route} from "react-router-dom";
 import MainLayout from "@/components/MainLayout.jsx";
 import Home from "@/Pages/Home.jsx";
+import Map from "@/Pages/Map.jsx";
 // import EventCard from "@/components/EventCard.jsx";
 
 const App = () => {
@@ -14,7 +15,8 @@ const App = () => {
         <Routes>
             <Route path="/test" element={<SocialEventsApp/>}/>
             <Route path="/" element={<MainLayout/>}>
-                <Route path="/teas" element={<Home/>}/>
+                <Route path="/discover" index element={<Home/>}/>
+                <Route path="/live-map" element={<Map/>}/>
             </Route>
         </Routes>
     );

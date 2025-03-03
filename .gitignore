@@ -17,6 +17,7 @@ src/components/SocialEventsApp.jsx
 .vscode/*
 !.vscode/extensions.json
 .idea
+.vs/
 .DS_Store
 *.suo
 *.ntvs*

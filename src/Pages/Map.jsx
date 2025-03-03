@@ -21,6 +21,7 @@ function Map() {
     const [selectedMarker, setSelectedMarker] = useState(null);
     const [direction, setDirection] = useState(null)
     const [userPosition, setUserPosition] = useState({lat: null, lng: null});
+    const [markerAddress, setMarkerAddress] = useState(null)
     const {isLoaded} = useJsApiLoader({
         googleMapsApiKey: import.meta.env.VITE_GOOGLE_API_KEY,
     })
@@ -34,7 +35,16 @@ function Map() {
     const handleFormSubmit = (data) => {
         setMapCoords((prevCoords) => [...prevCoords, {lat: parseFloat(data.lat), lng: parseFloat(data.long)}])
     };
-    console.log(selectedMarker);
+    const geocodeMarker = (coord) => {
+        const geocoder = new google.maps.Geocoder();
+        geocoder.geocode({location: coord}, (results, status) => {
+            if (status === google.maps.GeocoderStatus.OK) {
+                setMarkerAddress(results[0].formatted_address);
+            } else {
+                setMarkerAddress("Not found");
+            }
+        })
+    }
     const fetchDirections = () => {
         if (!selectedMarker) {
             console.log("Please select a marker for directions.");
@@ -71,10 +81,11 @@ function Map() {
 
                     <Marker position={coord} icon={markerIcon} key={index} onClick={() => {
                         setSelectedMarker(coord);
+                        geocodeMarker(coord);
                     }}>
                         {selectedMarker === coord ? (
                             <InfoWindow position={coord} onCloseClick={() => setSelectedMarker(null)}>
-                                <p>Hello I am here in {coord.lng}</p>
+                                <p>{markerAddress}</p>
                             </InfoWindow>
                         ) : null}
                     </Marker>
