@@ -1,7 +1,7 @@
 import React from 'react';
 import {ArrowRightIcon, CalendarIcon, MapPin, PersonStandingIcon} from "lucide-react";
 
-const EventCard = () => {
+const EventCard = ({data}) => {
     return (
         <div className="event-card bg-white rounded-lg shadow-md">
             <div className="card-header">
@@ -18,19 +18,19 @@ const EventCard = () => {
                     </div>
                 </div>
                 <div className="card-title text-xl font-bold">
-                    Community Cleanup Dive
+                    {data.title}
                 </div>
                 <div className="card-description text-gray-600 text-sm">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit, unde.
+                    {data.description}
                 </div>
                 <div className="card-details flex gap-4">
                     <div className="card-date flex gap-2 items-center">
                         <CalendarIcon size={20} className="text-blue-600"/>
-                        <span>3/1/2024</span>
+                        <span>{new Date(data.date).toLocaleDateString()}</span>
                     </div>
                     <div className="card-location flex gap-2 items-center">
                         <MapPin size={20} className="text-blue-600"/>
-                        <span>Biratnagar</span>
+                        <span>{data.location}</span>
                     </div>
                 </div>
             </div>

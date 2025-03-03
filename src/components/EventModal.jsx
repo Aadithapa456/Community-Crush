@@ -2,14 +2,17 @@ import React, {useContext} from 'react';
 import {X} from "lucide-react";
 import {ModalContext} from "@/Context/ModalContext.jsx";
 import {useForm} from "react-hook-form";
-
+import {saveEvent} from "@/Helpers/LocalStorage.js";
+import {v4} from "uuid";
 
 const EventModal = () => {
     const {closeModal} = useContext(ModalContext);
     const {register, handleSubmit} = useForm();
-    const onSubmit = (e) => {
-        console.log(e)
+    const onSubmit = (data) => {
+        const eventWithId = {id: v4(), ...data}
+        saveEvent(eventWithId)
     }
+
     return (
         <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-30 backdrop-blur">
             <div className="modal-container bg-white rounded-[8px] overflow-hidden">
@@ -22,7 +25,7 @@ const EventModal = () => {
                         <label htmlFor="title">Event title</label>
                         <input type="text" placeholder="Describe the event" id="title" name="title"
                                className="p-2 outline-0 border border-gray-300 rounded-[6px]"
-                               {...register('title')}
+                               {...register('title', {required: true})}
                         />
                     </div>
                     <div className="form-group flex flex-col gap-1">

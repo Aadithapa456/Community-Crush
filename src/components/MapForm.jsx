@@ -3,10 +3,8 @@ import {useForm} from "react-hook-form";
 
 function MapForm({onFormSubmit}) {
     const {register, handleSubmit} = useForm();
-    const onSubmit = (e) => {
-        // e.preventDefault();
-        // console.log("handleSubmit", e);
-        onFormSubmit(e)
+    const onSubmit = (data) => {
+        onFormSubmit(data)
     }
     return (
         <form onSubmit={handleSubmit(onSubmit)}

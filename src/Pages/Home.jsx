@@ -1,11 +1,17 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Header from "@/components/Header.jsx";
 import SearchSection from "@/components/SearchSection.jsx";
 import EventCard from "@/components/EventCard.jsx";
+import {getEvents} from "@/Helpers/LocalStorage.js";
 
 const tabItems = ["Trending", "Upcoming", "For You", "Popular"];
 const Home = () => {
     const [selectedTab, setSelectedTab] = useState("Trending");
+    const [eventData, setEventData] = useState([])
+    useEffect(() => {
+        const events = getEvents();
+        setEventData(events);
+    }, []);
     return (
         <>
             {/*<Header/>*/}
@@ -24,10 +30,10 @@ const Home = () => {
                     </ul>
                 </div>
                 <div className="card-container grid grid-cols-3 gap-x-10 gap-y-10 px-6 mt-10">
-                    <EventCard/>
-                    <EventCard/>
-                    <EventCard/>
-                    <EventCard/>
+                    {eventData ? eventData.map((item, index) => (
+
+                        <EventCard data={item} key={item.id}/>
+                    )) : null}
                 </div>
             </div>
         </>
