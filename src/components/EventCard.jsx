@@ -1,9 +1,13 @@
 import React from 'react';
 import {ArrowRightIcon, CalendarIcon, MapPin, PersonStandingIcon} from "lucide-react";
+import {motion} from "framer-motion";
 
 const EventCard = ({data}) => {
     return (
-        <div className="event-card bg-white rounded-lg shadow-md">
+        <motion.div className="event-card bg-white rounded-lg shadow-md"
+                    initial={{opacity: 0, y: 20}}
+                    animate={{opacity: 1, y: 0}}
+                    transition={{duration: 0.5, ease: "easeOut"}}>
             <div className="card-header">
                 <img src="https://placehold.co/800x400/png" alt=""/>
             </div>
@@ -41,7 +45,7 @@ const EventCard = ({data}) => {
                     <ArrowRightIcon size={20}/>
                 </button>
             </div>
-        </div>
+        </motion.div>
     )
         ;
 };
